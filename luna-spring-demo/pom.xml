@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.luna</groupId>
+        <artifactId>luna-exercise</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.luna</groupId>
+    <artifactId>luna-spring-demo</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>luna-spring-demo</name>
+    <packaging>jar</packaging>
+    <description>Demo project for Spring Boot</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <elasticsearch.version>7.6.2</elasticsearch.version>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>luna-common-mvn-repo-commons</id>
+            <url>https://raw.github.com/czy1024/luna-commons/mvn-repo-luna-commons/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+
+        <repository>
+            <id>luna-common-mvn-repo-media</id>
+            <url>https://raw.github.com/czy1024/luna-commons/mvn-repo-luna-media/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+
+        <repository>
+            <id>luna-common-mvn-repo-media</id>
+            <url>https://raw.github.com/czy1024/luna-commons/mvn-repo-luna-common/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+
+        <repository>
+            <id>luna-common-mvn-repo-baidu</id>
+            <url>https://raw.github.com/czy1024/luna-commons/mvn-repo-luna-baidu/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+
+        <repository>
+            <id>luna-common-mvn-repo-baidu</id>
+            <url>https://raw.github.com/czy1024/luna-commons/mvn-repo-luna-file/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+
+        <repository>
+            <id>luna-common-mvn-repo-tencent</id>
+            <url>https://raw.github.com/czy1024/luna-commons/mvn-repo-luna-tencent/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+
+        <repository>
+            <id>luna-commons-mvn-repo-db</id>
+            <url>https://raw.github.com/czy1024/luna-commons/mvn-repo-luna-commons-db/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <!--Jest 操作 -->
+        <dependency>
+            <groupId>io.searchbox</groupId>
+            <artifactId>jest</artifactId>
+            <version>5.3.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.luna</groupId>
+            <artifactId>luna-commons-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.luna</groupId>
+            <artifactId>luna-commons-mybatis</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.luna</groupId>
+            <artifactId>luna-commons-baidu</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.luna</groupId>
+            <artifactId>luna-commons-mybatis</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.luna</groupId>
+            <artifactId>luna-commons-redis</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.luna</groupId>
+            <artifactId>luna-commons-elasticsearch</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.luna</groupId>
+            <artifactId>luna-commons-file</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.luna</groupId>
+            <artifactId>luna-commons-tencent</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.luna</groupId>
+            <artifactId>luna-commons-media</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
