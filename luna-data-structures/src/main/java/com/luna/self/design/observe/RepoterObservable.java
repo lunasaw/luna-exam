@@ -1,6 +1,4 @@
 package com.luna.self.design.observe;
-
-import javax.security.auth.Subject;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -21,7 +19,7 @@ public class RepoterObservable extends Observable {
     public void setNews(String news) {
         this.news = news;
         setChanged(); // 必须调用这个方法来通知Observer状态发生了改变
-        notifyObservers("you");
+        notifyObservers(news);
     }
 
 }
