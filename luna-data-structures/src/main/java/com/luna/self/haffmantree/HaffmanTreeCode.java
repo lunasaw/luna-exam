@@ -2,9 +2,16 @@ package com.luna.self.haffmantree;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.luna.common.utils.FileUtils;
+import com.sun.imageio.plugins.common.ImageUtil;
 import org.apache.commons.lang3.StringUtils;
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import sun.jvm.hotspot.runtime.Bytes;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -12,7 +19,7 @@ import java.util.*;
  * @className HaffmanTree.java
  * @description TODO
  * 源码发送 字母转ascll 转二进制
- * 字母出现次数作为权值排序  构建haffman树 左为0 右为1
+ * 字母出现次数作为权值排序 构建haffman树 左为0 右为1
  * @createTime 2021年03月04日 16:47:00
  */
 public class HaffmanTreeCode {
@@ -51,7 +58,6 @@ public class HaffmanTreeCode {
         return list;
     }
 
-
     public static void preOrder(NodeCode root) {
         if (root != null) {
             root.preOrder();
@@ -75,7 +81,6 @@ public class HaffmanTreeCode {
         Collections.sort(tree);
         NodeCode node = haffmanTree(tree);
         Map<Character, String> characterStringMap = haffmanCodeCreate(node);
-        System.out.println(characterStringMap);
         StringBuilder stringBuilder = new StringBuilder();
         char[] chars = content.toCharArray();
         for (char c : chars) {
@@ -84,17 +89,17 @@ public class HaffmanTreeCode {
         return stringBuilder.toString();
     }
 
-
     /**
      * 创建haffman编码表
      *
-     * @param nodeCode      跟结点
-     * @param code          当前编码
+     * @param nodeCode 跟结点
+     * @param code 当前编码
      * @param stringBuilder
      * @param codeMap
      * @return
      */
-    public static Map<Character, String> haffmanCodeCreate(NodeCode nodeCode, String code, StringBuilder stringBuilder, Map<Character, String> codeMap) {
+    public static Map<Character, String> haffmanCodeCreate(NodeCode nodeCode, String code, StringBuilder stringBuilder,
+        Map<Character, String> codeMap) {
         StringBuilder builder = new StringBuilder(stringBuilder);
         builder.append(code);
         if (nodeCode != null) {
@@ -112,16 +117,16 @@ public class HaffmanTreeCode {
         return codeMap;
     }
 
-
     private static Map<Character, String> hashMap = Maps.newHashMap();
 
     /**
      * 传入Node结点的所有叶子结点的Haffman编码得到并放入Map<Byte, String>集合
      *
      * @param nodeCode
-     * @param code     左为0 右为1
+     * @param code 左为0 右为1
      */
-    public static Map<Character, String> haffmanCodeCreate(NodeCode nodeCode, String code, StringBuilder stringBuilder) {
+    public static Map<Character, String> haffmanCodeCreate(NodeCode nodeCode, String code,
+        StringBuilder stringBuilder) {
         StringBuilder builder = new StringBuilder(stringBuilder);
         builder.append(code);
         if (nodeCode != null) {
@@ -186,7 +191,7 @@ public class HaffmanTreeCode {
     /**
      * 解压哈夫曼数据
      *
-     * @param bytes              编码后字节数组
+     * @param bytes 编码后字节数组
      * @param characterStringMap 编码表
      */
     public static String haffmanUnZip(byte[] bytes, Map<Character, String> characterStringMap) {
@@ -240,10 +245,12 @@ public class HaffmanTreeCode {
             } else {
                 strByte = stringBuilder.substring(i, i + Byte.SIZE);
             }
-            bytes[k++] = (byte) Integer.parseInt(strByte, 2);
+            bytes[k++] = (byte)Integer.parseInt(strByte, 2);
         }
         return bytes;
     }
+
+    private static final Logger log = LoggerFactory.getLogger(HaffmanTreeCode.class);
 
     public static void main(String[] args) {
         String content = "i like java, i'm doing now";
@@ -251,21 +258,38 @@ public class HaffmanTreeCode {
         byte[] bytes = haffmanCreateAndZip(content);
         int haffManLength = bytes.length;
         int length = content.getBytes().length;
-        double percent = (double) (length - haffManLength) / length;
+        double percent = (double)(length - haffManLength) / length;
         System.out.println(percent);
         System.out.println(haffmanUnZip(bytes, hashMap));
+
+        zipFile("luna-data-structures/src/main/java/com/luna/self/haffmantree/zip.txt",
+            "luna-data-structures/src/main/java/com/luna/self/haffmantree/txt.zip");
+
     }
 
+    /**
+     * 哈夫曼压缩文件
+     * 
+     * @param fileName 文件路径
+     * @param zipFile 返回的zip文件夹路径
+     */
+    public static void zipFile(String fileName, String zipFile) {
+        String content = FileUtils.readFileToString(fileName);
+        String haffmanCode = haffmanCodeCreate2Binary(content);
+        byte[] bytes = haffmanZip(haffmanCode);
+        FileUtils.writeBytesToFile(bytes, zipFile);
+        FileUtils.writeStringToFile(zipFile, zipFile);
+    }
 }
 
 class NodeCode implements Comparable<NodeCode> {
-    Integer value;
+    Integer   value;
 
     Character c;
 
-    NodeCode left;
+    NodeCode  left;
 
-    NodeCode right;
+    NodeCode  right;
 
     public NodeCode(int value) {
         this.value = value;
@@ -274,9 +298,9 @@ class NodeCode implements Comparable<NodeCode> {
     @Override
     public String toString() {
         return "NodeCode{" +
-                "value=" + value +
-                ", c=" + c +
-                '}';
+            "value=" + value +
+            ", c=" + c +
+            '}';
     }
 
     @Override
