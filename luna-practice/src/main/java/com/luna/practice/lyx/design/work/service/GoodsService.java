@@ -16,23 +16,21 @@ public class GoodsService {
 
     static Formatter formatter = new Formatter(System.out);
 
-    public void showGoods() {
+    public static void showGoods(List<GoodsDO> goodsList) {
         System.out.printf("%1s %3s %2s %2s %3s \n", "编号", "物品名", "价格", "分类", "品牌");
-
-        String[] strings = new String[GoodsDTO.goodsDOList.size()];
+        String[] strings = new String[goodsList.size()];
         StringBuilder stringBuilder = new StringBuilder();
-        List<GoodsDO> goodsDOList = GoodsDTO.goodsDOList;
-        for (int i = 0; i < goodsDOList.size(); i++) {
+        for (int i = 0; i < goodsList.size(); i++) {
             stringBuilder.append(
-                goodsDOList.get(i).getId() + "," + goodsDOList.get(i).getName() + "," + goodsDOList.get(i).getPrice()
-                    + "," + goodsDOList.get(i).getCategory().getName() + "," + goodsDOList.get(i).getBrand().getName());
+                goodsList.get(i).getId() + "," + goodsList.get(i).getName() + "," + goodsList.get(i).getPrice()
+                    + "," + goodsList.get(i).getCategory().getName() + "," + goodsList.get(i).getBrand().getName());
             strings[i] = stringBuilder.toString();
             stringBuilder = new StringBuilder("");
         }
         printResult(strings);
     }
 
-    public void printResult(String[] A) {
+    public static void printResult(String[] A) {
         String[] tempA = A[0].split(",");
         int maxLen = tempA.length;
         for (int i = 1; i < A.length; i++) {
@@ -92,7 +90,6 @@ public class GoodsService {
     }
 
     public static void main(String[] args) {
-        GoodsService goodsService = new GoodsService();
-        goodsService.showGoods();
+        GoodsService.showGoods(GoodsDTO.goodsDOList);
     }
 }
