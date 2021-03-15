@@ -2,16 +2,11 @@ package com.luna.self.haffmantree;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.luna.common.utils.FileUtils;
-import com.sun.imageio.plugins.common.ImageUtil;
+import com.luna.common.file.FileUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sun.jvm.hotspot.runtime.Bytes;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.*;
 
 /**
@@ -24,6 +19,12 @@ import java.util.*;
  */
 public class HaffmanTreeCode {
 
+    /**
+     * 数组返回List<Node></>
+     *
+     * @param arr
+     * @return
+     */
     public static List<NodeCode> createTree(int[] arr) {
         ArrayList<NodeCode> list = Lists.newArrayList();
         for (int i = 0; i < arr.length; i++) {
@@ -40,6 +41,12 @@ public class HaffmanTreeCode {
         return list;
     }
 
+    /**
+     * 字符串返回List<Node></>
+     *
+     * @param s
+     * @return
+     */
     public static List<NodeCode> createTree(String s) {
         ArrayList<NodeCode> list = Lists.newArrayList();
         char[] chars = s.toCharArray();
@@ -58,6 +65,11 @@ public class HaffmanTreeCode {
         return list;
     }
 
+    /**
+     * 前序遍历数
+     *
+     * @param root
+     */
     public static void preOrder(NodeCode root) {
         if (root != null) {
             root.preOrder();

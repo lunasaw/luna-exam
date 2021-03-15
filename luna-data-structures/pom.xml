@@ -11,6 +11,17 @@
 
     <artifactId>luna-data-structures</artifactId>
 
+    <repositories>
+        <repository>
+            <id>luna-common-mvn-repo-common</id>
+            <url>https://raw.github.com/czy1024/luna-commons/mvn-repo-luna-common/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>com.luna</groupId>

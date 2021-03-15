@@ -9,29 +9,35 @@ package com.luna.self.tree;
 public class TreeNode {
 
     public static void main(String[] args) {
-        BinaryTreeNode hero1 = new BinaryTreeNode(1, "宋江");
-        BinaryTreeNode hero2 = new BinaryTreeNode(2, "卢俊义");
-        BinaryTreeNode hero3 = new BinaryTreeNode(3, "吴用");
-        BinaryTreeNode hero4 = new BinaryTreeNode(4, "林冲");
-        BinaryTreeNode hero5 = new BinaryTreeNode(5, "关胜");
-        BinaryTree binaryTree = new BinaryTree(hero3);
+        BinaryTreeNode hero1 = new BinaryTreeNode(7, "宋江");
+        BinaryTreeNode hero2 = new BinaryTreeNode(3, "卢俊义");
+        BinaryTreeNode hero3 = new BinaryTreeNode(10, "吴用");
+        BinaryTreeNode hero4 = new BinaryTreeNode(12, "林冲");
+        BinaryTreeNode hero5 = new BinaryTreeNode(5, "秦明");
+        BinaryTreeNode hero6 = new BinaryTreeNode(1, "呼延灼");
+        BinaryTreeNode hero7 = new BinaryTreeNode(9, "花荣");
+        BinaryTreeNode hero8 = new BinaryTreeNode(2, "柴进");
+        BinaryTree binaryTree = new BinaryTree(hero1);
         binaryTree.add(hero2);
+        binaryTree.add(hero3);
         binaryTree.add(hero4);
         binaryTree.add(hero5);
-        binaryTree.add(hero1);
+        binaryTree.add(hero6);
+        binaryTree.add(hero7);
+        binaryTree.add(hero8);
+
+        binaryTree.infixOrder();
+        System.out.println("中序 ==========");
+
+        binaryTree.delNode(3);
         System.out.println("中序 ==========");
         binaryTree.infixOrder();
-        System.out.println("后序 ==========");
-        binaryTree.postOrder();
-        System.out.println("前序 ==========");
-        binaryTree.preOrder();
-
-        System.out.println("中序 ==========");
-        binaryTree.infixFind("林冲");
-        System.out.println("后序 ==========");
-        binaryTree.postFind("林冲");
-        System.out.println("前序 ==========");
-        System.out.println(binaryTree.preFind("林冲"));
+        binaryTree.delNode(1);
+        binaryTree.delNode(2);
+        binaryTree.delNode(5);
+        binaryTree.delNode(8);
+        binaryTree.delNode(12);
+        binaryTree.infixOrder();
 
     }
 
@@ -54,9 +60,101 @@ class BinaryTree {
         return this;
     }
 
+    public BinaryTreeNode search(int id) {
+        if (root == null) {
+            return null;
+        } else {
+            return this.root.search(id);
+        }
+    }
+
+
+    public BinaryTreeNode searchParent(int id) {
+        if (root == null) {
+            return null;
+        } else {
+            return this.root.searchParent(id);
+        }
+    }
+
+    public void delNode(int id) {
+        if (root == null) {
+            return;
+        } else {
+            // 1. 需求先去找到要删除的节点
+            BinaryTreeNode targetNode = search(id);
+            if (targetNode == null) {
+                return;
+            }
+            // 如果当前树只有一个节点
+            if (root.getLeft() == null && root.getRight() == null) {
+                root = null;
+            }
+            // 2. 删除叶子节点
+            // 找到targetNode 的父节点
+            BinaryTreeNode searchParent = searchParent(id);
+            // 如果是叶子节点
+            if (targetNode.getLeft() == null && targetNode.getRight() == null) {
+                // 判断targetNode 属于父节点的左还是右
+                if (searchParent.getLeft() != null && searchParent.getLeft().getId() == targetNode.getId()) {
+                    // 左就置空
+                    searchParent.setLeft(null);
+                } else if (searchParent.getRight() != null && searchParent.getRight().getId() == targetNode.getId()) {
+                    // 右置空
+                    searchParent.setRight(null);
+                }
+                // 删除有两颗子树的节点
+            } else if (targetNode.getLeft() != null && targetNode.getRight() != null) {
+                BinaryTreeNode rightMid = getRightMid(targetNode.getRight());
+                targetNode.setId(rightMid.getId());
+                targetNode.setName(rightMid.getName());
+                System.out.println(rightMid);
+            } else {
+                // 删除只有一棵子树的节点
+                // 如果targetNode 只有左子点
+                if (targetNode.getLeft() != null) {
+                    if (searchParent.getLeft().getId() == targetNode.getId()) {
+                        // 且为父亲的左子节点
+                        searchParent.setLeft(targetNode.getLeft());
+                    } else {
+                        // 且为父亲的右子节点
+                        searchParent.setRight(targetNode.getLeft());
+                    }
+                } else {
+                    // 如果targetNode 只有右子点
+                    if (searchParent.getLeft().getId() == targetNode.getId()) {
+                        // 且为父亲的左子节点
+                        searchParent.setLeft(targetNode.getRight());
+                    } else {
+                        // 且为父亲的右子节点
+                        searchParent.setRight(targetNode.getRight());
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * 返回当前树的最小节点值 并删除最小节点
+     *
+     * @param node
+     */
+    public BinaryTreeNode getRightMid(BinaryTreeNode node) {
+        BinaryTreeNode target = node;
+        // 循环查找左节点 底下就是最小值
+        while (target.getLeft() != null) {
+            target = target.getLeft();
+        }
+        // target 指向最小节点 删除它
+        delNode(target.getId());
+        // 返回当前节点值
+        return target;
+    }
+
+
     /**
      * 删除
-     * 
+     *
      * @param id
      */
     public void delete(int id) {
@@ -134,15 +232,16 @@ class BinaryTree {
 
 class BinaryTreeNode {
 
-    private int            id;
+    private int id;
 
-    private String         name;
+    private String name;
 
-    private BinaryTreeNode left  = null;
+    private BinaryTreeNode left = null;
 
     private BinaryTreeNode right = null;
 
-    public BinaryTreeNode() {}
+    public BinaryTreeNode() {
+    }
 
     public BinaryTreeNode(int id, String name) {
         this.id = id;
@@ -187,17 +286,53 @@ class BinaryTreeNode {
 
     @Override
     public String toString() {
-        return "BinaryTreeNode{" +
-            "id=" + id +
-            ", name='" + name + '\'' +
-            '}';
+        return "BinaryTreeNode{" + "id=" + id + ", name='" + name + '\'' + '}';
+    }
+
+    public BinaryTreeNode search(int id) {
+        if (id == this.getId()) {
+            return this;
+        } else if (id <= this.id) {
+            if (this.left != null) {
+                return this.left.search(id);
+            } else {
+                return null;
+            }
+        } else {
+            if (this.right != null) {
+                return this.right.search(id);
+            } else {
+                return null;
+            }
+        }
     }
 
     /**
-     * 根据Id删除结点
-     * 1.如果删除的节点是叶子节点，则删除该节点
-     * 2.如果删除的节点是非叶子节点，则删除该子树
-     * 
+     * 查找父节点
+     *
+     * @param id
+     */
+    public BinaryTreeNode searchParent(int id) {
+        if ((this.left != null && this.left.id == id) || (this.right != null && this.right.id == id)) {
+            return this;
+        } else {
+            // 查找值小于当前节点值 并且当前节点的左子节点不为空
+            if (id < this.id && this.left != null) {
+                // 左子树递归查找
+                return this.left.searchParent(id);
+            } else if (id > this.id && this.right != null) {
+                // 右子树递归查找
+                return this.right.searchParent(id);
+            } else {
+                // 没有父节点
+                return null;
+            }
+        }
+    }
+
+    /**
+     * 根据Id删除结点 1.如果删除的节点是叶子节点，则删除该节点 2.如果删除的节点是非叶子节点，则删除该子树
+     *
      * @param id
      */
     public void delete(int id) {
@@ -258,7 +393,7 @@ class BinaryTreeNode {
 
     /**
      * 前序查找
-     * 
+     *
      * @param name
      * @return
      */
@@ -279,7 +414,7 @@ class BinaryTreeNode {
 
     /**
      * 中序查找
-     * 
+     *
      * @param name
      * @return
      */
@@ -300,7 +435,7 @@ class BinaryTreeNode {
 
     /**
      * 后序查找
-     * 
+     *
      * @param name
      * @return
      */
@@ -321,7 +456,7 @@ class BinaryTreeNode {
 
     /**
      * 添加结点
-     * 
+     *
      * @param node
      */
     public void add(BinaryTreeNode node) {
