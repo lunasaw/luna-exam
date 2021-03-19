@@ -5,7 +5,6 @@ import com.luna.practice.lyx.design.work.entity.GoodsDO;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.UUID;
 
 /**
  * @author luna@mac
