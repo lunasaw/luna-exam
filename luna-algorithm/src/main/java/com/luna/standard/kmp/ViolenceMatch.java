@@ -1,4 +1,4 @@
-package com.luna.kmp;
+package com.luna.standard.kmp;
 
 public class ViolenceMatch {
 

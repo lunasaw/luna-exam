@@ -1,4 +1,4 @@
-package com.luna.greedy;
+package com.luna.standard.greedy;
 
 import java.util.ArrayList;
 import java.util.HashMap;

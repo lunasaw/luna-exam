@@ -1,4 +1,4 @@
-package com.luna.horse;
+package com.luna.standard.horse;
 
 import java.awt.Point;
 import java.util.ArrayList;

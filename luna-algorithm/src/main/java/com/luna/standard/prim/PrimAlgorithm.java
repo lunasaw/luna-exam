@@ -1,4 +1,4 @@
-package com.luna.prim;
+package com.luna.standard.prim;
 
 import java.util.Arrays;
 

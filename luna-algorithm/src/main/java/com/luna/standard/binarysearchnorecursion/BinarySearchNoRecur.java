@@ -1,4 +1,4 @@
-package com.luna.binarysearchnorecursion;
+package com.luna.standard.binarysearchnorecursion;
 
 public class BinarySearchNoRecur {
 

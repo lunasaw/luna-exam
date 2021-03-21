@@ -1,4 +1,4 @@
-package com.luna.dijkstra;
+package com.luna.standard.dijkstra;
 
 import java.util.Arrays;
 

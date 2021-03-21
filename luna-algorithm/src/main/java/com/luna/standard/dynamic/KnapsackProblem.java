@@ -1,4 +1,4 @@
-package com.luna.dynamic;
+package com.luna.standard.dynamic;
 
 public class KnapsackProblem {
 

@@ -1,4 +1,4 @@
-package com.luna.kruskal;
+package com.luna.standard.kruskal;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package com.luna.floyd;
+package com.luna.standard.floyd;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package com.luna.dac;
+package com.luna.standard.dac;
 
 public class Hanoitower {
 
