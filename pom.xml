@@ -17,7 +17,7 @@
     <modules>
         <module>luna-jvm</module>
         <module>luna-practice</module>
-        <module>luna-spring-demo</module>
+        <module>luna-spring</module>
         <module>luna-leetcode</module>
         <module>luna-data-structures</module>
         <module>luna-algorithm</module>
