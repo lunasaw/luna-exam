@@ -55,11 +55,13 @@ class AVLTree {
         }
     }
 
-    // 编写方法:
-    // 1. 返回的 以node 为根结点的二叉排序树的最小结点的值
-    // 2. 删除node 为根结点的二叉排序树的最小结点
+
 
     /**
+     * 编写方法:
+     * 1. 返回的 以node 为根结点的二叉排序树的最小结点的值
+     * 2. 删除node 为根结点的二叉排序树的最小结点
+     * 
      * @param node 传入的结点(当做二叉排序树的根结点)
      * @return 返回的 以node 为根结点的二叉排序树的最小结点的值
      */
@@ -75,7 +77,11 @@ class AVLTree {
         return target.value;
     }
 
-    // 删除结点
+    /**
+     * 删除结点
+     * 
+     * @param value
+     */
     public void delNode(int value) {
         if (root == null) {
             return;
@@ -207,7 +213,9 @@ class Node {
 
     }
 
-    //右旋转
+    /**
+     * 右旋转
+     */
     private void rightRotate() {
         Node newNode = new Node(value);
         newNode.right = right;
@@ -217,22 +225,26 @@ class Node {
         right = newNode;
     }
 
-    // 查找要删除的结点
 
     /**
+     * 查找要删除的结点
+     * 
      * @param value 希望删除的结点的值
      * @return 如果找到返回该结点，否则返回null
      */
     public Node search(int value) {
-        if (value == this.value) { // 找到就是该结点
+        if (value == this.value) {
+            // 找到就是该结点
             return this;
-        } else if (value < this.value) {// 如果查找的值小于当前结点，向左子树递归查找
+        } else if (value < this.value) {
+            // 如果查找的值小于当前结点，向左子树递归查找
             // 如果左子结点为空
             if (this.left == null) {
                 return null;
             }
             return this.left.search(value);
-        } else { // 如果查找的值不小于当前结点，向右子树递归查找
+        } else {
+            // 如果查找的值不小于当前结点，向右子树递归查找
             if (this.right == null) {
                 return null;
             }
@@ -241,9 +253,9 @@ class Node {
 
     }
 
-    // 查找要删除结点的父结点
-
     /**
+     * 查找要删除结点的父结点
+     * 
      * @param value 要找到的结点的值
      * @return 返回的是要删除的结点的父结点，如果没有就返回null
      */
@@ -254,9 +266,11 @@ class Node {
         } else {
             // 如果查找的值小于当前结点的值, 并且当前结点的左子结点不为空
             if (value < this.value && this.left != null) {
-                return this.left.searchParent(value); // 向左子树递归查找
+                return this.left.searchParent(value);
+                // 向左子树递归查找
             } else if (value >= this.value && this.right != null) {
-                return this.right.searchParent(value); // 向右子树递归查找
+                return this.right.searchParent(value);
+                // 向右子树递归查找
             } else {
                 return null; // 没有找到父结点
             }
@@ -269,8 +283,12 @@ class Node {
         return "Node [value=" + value + "]";
     }
 
-    // 添加结点的方法
-    // 递归的形式添加结点，注意需要满足二叉排序树的要求
+    /**
+     * 添加结点的方法
+     * 递归的形式添加结点，注意需要满足二叉排序树的要求
+     * 
+     * @param node
+     */
     public void add(Node node) {
         if (node == null) {
             return;
@@ -325,7 +343,9 @@ class Node {
         }
     }
 
-    // 中序遍历
+    /**
+     * 中序遍历
+     */
     public void infixOrder() {
         if (this.left != null) {
             this.left.infixOrder();

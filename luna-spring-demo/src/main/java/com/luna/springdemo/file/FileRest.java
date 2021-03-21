@@ -41,11 +41,11 @@ public class FileRest {
         headers.add("ETag", String.valueOf(System.currentTimeMillis()));
 
         return ResponseEntity
-                .ok()
-                .headers(headers)
-                .contentLength(file.length())
-                .contentType(MediaType.parseMediaType("application/octet-stream"))
-                .body(new FileSystemResource(file));
+            .ok()
+            .headers(headers)
+            .contentLength(file.length())
+            .contentType(MediaType.parseMediaType("application/octet-stream"))
+            .body(new FileSystemResource(file));
     }
 
     @GetMapping("expore")
@@ -60,18 +60,18 @@ public class FileRest {
         ExcelWriter writer = ExcelUtil.getWriter();
         // 一次性写出内容，使用默认样式，强制输出标题
         writer.write(rows, true);
-        //out为OutputStream，需要写出到的目标流
+        // out为OutputStream，需要写出到的目标流
 
-        //response为HttpServletResponse对象
+        // response为HttpServletResponse对象
         response.setContentType("application/vnd.ms-excel;charset=utf-8");
-        //test.xls是弹出下载对话框的文件名，不能为中文，中文请自行编码
+        // test.xls是弹出下载对话框的文件名，不能为中文，中文请自行编码
         response.setHeader("Content-Disposition", "attachment;filename=test.xls");
         ServletOutputStream out = response.getOutputStream();
 
         writer.flush(out, true);
         // 关闭writer，释放内存
         writer.close();
-        //此处记得关闭输出Servlet流
+        // 此处记得关闭输出Servlet流
         IoUtil.close(out);
         return response;
     }

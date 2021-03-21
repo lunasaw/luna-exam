@@ -11,8 +11,10 @@
 
     <!--查询单个-->
     <select id="getByPrimaryKey" resultMap="ArticleMap">
-        select
-          id, name, title, content
+        select id,
+               name,
+               title,
+               content
         from article
         where id = #{id}
     </select>
@@ -20,7 +22,7 @@
     <!--通过实体作为筛选条件查询-->
     <select id="getAll" resultMap="ArticleMap">
         select
-          id, name, title, content
+        id, name, title, content
         from article
         <where>
             <if test="id != null">
@@ -42,24 +44,26 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into article
         (
-            <if test="name != null and name != ''">
-                name,
-            </if>
-            <if test="title != null and title != ''">
-                title,
-            </if>
-            <if test="content != null and content != ''">
-                content            </if>
+        <if test="name != null and name != ''">
+            name,
+        </if>
+        <if test="title != null and title != ''">
+            title,
+        </if>
+        <if test="content != null and content != ''">
+            content
+        </if>
         )
         values (
-            <if test="name != null and name != ''">
+        <if test="name != null and name != ''">
             #{name},
-            </if>
-            <if test="title != null and title != ''">
+        </if>
+        <if test="title != null and title != ''">
             #{title},
-            </if>
-            <if test="content != null and content != ''">
-            #{content}            </if>
+        </if>
+        <if test="content != null and content != ''">
+            #{content}
+        </if>
         )
     </insert>
 
@@ -74,14 +78,17 @@
                 title = #{title} ,
             </if>
             <if test="content != null and content != ''">
-                content = #{content}             </if>
+                content = #{content}
+            </if>
         </set>
         where id = #{id}
     </update>
 
     <!--通过主键删除-->
     <delete id="deleteByPrimaryKey">
-        delete from article where id = #{id}
+        delete
+        from article
+        where id = #{id}
     </delete>
 
 </mapper>

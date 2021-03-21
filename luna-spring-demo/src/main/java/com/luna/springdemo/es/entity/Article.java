@@ -11,19 +11,18 @@ import java.io.Serializable;
  * @author luna
  * @since 2020-04-10 16:07:16
  */
-@Document(indexName = "luna",type = "news")
+@Document(indexName = "luna", type = "news")
 public class Article implements Serializable {
     private static final long serialVersionUID = 577823755105139324L;
 
     @JestId
-    private Integer id;
-    
-    private String name;
-    
-    private String title;
-    
-    private String content;
+    private Integer           id;
 
+    private String            name;
+
+    private String            title;
+
+    private String            content;
 
     public Integer getId() {
         return id;

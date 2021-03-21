@@ -18,7 +18,7 @@ public interface ArticleService {
      * @return 实例对象
      */
     Article getById(Integer id);
-    
+
     /**
      * 通过Article对象查询集合
      *

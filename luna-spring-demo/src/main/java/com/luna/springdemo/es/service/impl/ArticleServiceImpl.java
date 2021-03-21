@@ -29,7 +29,7 @@ public class ArticleServiceImpl implements ArticleService {
     public Article getById(Integer id) {
         return this.articleMapper.getByPrimaryKey(id);
     }
-    
+
     /**
      * 通过Article对象查询集合
      *
