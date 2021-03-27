@@ -42,42 +42,6 @@
         </repository>
 
         <repository>
-            <id>luna-common-mvn-repo-media</id>
-            <url>https://raw.github.com/czy1024/luna-commons/mvn-repo-luna-common/</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </repository>
-
-        <repository>
-            <id>luna-common-mvn-repo-baidu</id>
-            <url>https://raw.github.com/czy1024/luna-commons/mvn-repo-luna-baidu/</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </repository>
-
-        <repository>
-            <id>luna-common-mvn-repo-baidu</id>
-            <url>https://raw.github.com/czy1024/luna-commons/mvn-repo-luna-file/</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </repository>
-
-        <repository>
-            <id>luna-common-mvn-repo-tencent</id>
-            <url>https://raw.github.com/czy1024/luna-commons/mvn-repo-luna-tencent/</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </repository>
-
-        <repository>
             <id>luna-commons-mvn-repo-db</id>
             <url>https://raw.github.com/czy1024/luna-commons/mvn-repo-luna-commons-db/</url>
             <snapshots>
@@ -88,6 +52,18 @@
     </repositories>
 
     <dependencies>
+        <dependency>
+            <groupId>com.github.czy1024</groupId>
+            <artifactId>baidu-spring-boot-starter</artifactId>
+            <version>1.0.4-RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.czy1024</groupId>
+            <artifactId>tencent-spring-boot-starter</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+
         <!--Jest 操作 -->
         <dependency>
             <groupId>io.searchbox</groupId>
@@ -114,18 +90,6 @@
 
         <dependency>
             <groupId>com.luna</groupId>
-            <artifactId>luna-commons-baidu</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.luna</groupId>
-            <artifactId>luna-commons-mybatis</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.luna</groupId>
             <artifactId>luna-commons-redis</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
@@ -139,12 +103,6 @@
         <dependency>
             <groupId>com.luna</groupId>
             <artifactId>luna-commons-file</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.luna</groupId>
-            <artifactId>luna-commons-tencent</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 

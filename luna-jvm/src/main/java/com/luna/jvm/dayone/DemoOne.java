@@ -4,6 +4,7 @@ import sun.misc.Launcher;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * @Package: com.luna.jvm.dayone
@@ -30,5 +31,8 @@ public class DemoOne {
         System.out.println(String.class.getClassLoader());
 
         System.out.println("*****扩展类加载器*******");
+
+        HashSet<String> set = new HashSet();
+        set.add("a");
     }
 }

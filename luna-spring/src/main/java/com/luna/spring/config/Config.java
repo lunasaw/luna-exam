@@ -1,7 +1,5 @@
 package com.luna.spring.config;
 
-import com.luna.baidu.config.BaiduConfigValue;
-import com.luna.baidu.config.GetBaiduKey;
 import com.luna.common.spring.SpringUtils;
 import com.luna.redis.util.RedisBoundUtil;
 import com.luna.redis.util.RedisKeyUtil;
@@ -27,16 +25,6 @@ public class Config {
     @Bean
     public TencentConfigValue tencentConfigValue() {
         return new TencentConfigValue();
-    }
-
-    @Bean
-    public BaiduConfigValue baiduConfigValue() {
-        return new BaiduConfigValue();
-    }
-
-    @Bean
-    public GetBaiduKey getBaiduKey() {
-        return new GetBaiduKey();
     }
 
     @Bean
