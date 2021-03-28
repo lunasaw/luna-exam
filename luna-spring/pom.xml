@@ -52,6 +52,19 @@
     </repositories>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.github.czy1024</groupId>
+            <artifactId>ali-spring-boot-starter</artifactId>
+            <version>1.0.0-RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.czy1024</groupId>
+            <artifactId>api-spring-boot-starter</artifactId>
+            <version>1.0.0-RELEASE</version>
+        </dependency>
+
         <dependency>
             <groupId>com.github.czy1024</groupId>
             <artifactId>baidu-spring-boot-starter</artifactId>

@@ -23,11 +23,6 @@ public class Config {
     }
 
     @Bean
-    public TencentConfigValue tencentConfigValue() {
-        return new TencentConfigValue();
-    }
-
-    @Bean
     public RedisKeyUtil redisUtil() {
         return new RedisKeyUtil();
     }
