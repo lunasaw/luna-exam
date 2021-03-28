@@ -14,6 +14,7 @@ spring:
   timeout: 1000.0 # 连接超时时间（毫秒）
 
 
+
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver              # mysql驱动包
     url: jdbc:mysql://localhost:3306/spring-demo?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
@@ -30,8 +31,78 @@ spring:
       connection-timeout: 5000
       read-timeout: 30000
 
+  rabbitmq:
+    host: f.xicc.cc
+    port: 23408
+    username: luna
+    password: czy1024
+
 
 mybatis:
   mapperLocations: classpath:mapper/es/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
   typeAliasesPackage: com.luna.spring.*.entity  # 注意：对应实体类的路径
   configLocation: classpath:mybatis/mybatis-config.xml
+
+luna:
+  baidu:
+    enable: true
+    appId: 19618961
+    appKey: 5PxAx3xioG4SlPNXin97XnnU
+    secretKey: cyHNXghpyGAREPv8Ow8ZXPFHIqaW5uNi
+    baiduKey: 24.7dfa7aa0c9057d09575b07fd98dc15fa.2592000.1598414403.282335-19618961
+    jsKey: DezNcsGYMqUvMpB3d1DKlvejwHTtwIDo
+    projectId: 41168
+
+  ali:
+    enable: true
+    #\u963F\u91CCoss\u670D\u52A1\u5668
+    bucketName: luna97
+    host: oss-cn-beijing.aliyuncs.com
+    ossId: LTAI4GA22TT9cBUC529Xuvft
+    ossKey: 0WBgw5qR3Ik4rXDwj3dyVA2j11ZfN7
+    domain: ali.iszychen.club
+    serverUrl: http://111.229.114.126:7777/index.html
+  alipay:
+    appId: 2016101800713019
+    gatewayUrl: https://openapi.alipaydev.com/gateway.do
+    notifyUrl: http://111.229.114.126:7777/ali/notify
+    privateKey: MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCTvB+IXci2PoVajgs66kvobBI0glRePCEREWSuSxXi3fGRA8IZG2zBnZBxo0UF5kBp13DxC0e5ZB7lSwBMV6AtctPbaRX93oxF9Qwv/PX/D0+09RNFLqcbCdZb40XypYCqLRMqwlUiJIAcD6CUVsap2MtGHuWvbPSh4RmeGFhY3ia4qyQSFka3FrsoXuw5fIBukFBWScym1wBguymtRRYF1Vmaf7Fntt7MK6FXtdHm5HiTctTXCvI3uIkUr3z/6liqGZh1VMKknFqcDjx35kBAtWzMWfvw6dauVKDEXeJEoGNnHVAoXyDGTG6UcyrX7vuCsB65ph/+km0yAZGGl0chAgMBAAECggEAR9XS02Ee5pbyCv1EsqoYrPRXydaRpZzBS2ZUuXdjNgRLoQLdz42JTYALK2aDeoHiUlTi4yJkBt6LM11L0NNO3KqYH3kyq1YaiS3FdlQfXZ2ZWVlNvHcZ5EjdRaL2cS1OqfDu//ysnsR20q46m8ayJQZ4mSkO8EUfktM8vKYD13m1A2r8ITGnSb0nvm6ID7L9B8v7Wa7Y0D3+kOZkoK2YnyJej+28LpWHxpAGKGFdcQ6fBSnrM2xttEsdXu4nqVBYjBf/1cIoQinZy1A0yK1jfU1FIRwsXlOzJBLwqtvJBNAy9KL8oG6SdC6m6AI7RiI7Omr83umQUQIR4S0ITDCIEQKBgQDuCgxz7eY9DDRgu354UP51n8UZF5q1LuPBQroIiZUPYXfcT6AyUsgMzY1A0Gd/W9Mbyv/ldYpINzPGDius0wvczXtjX9QeJYN1siWwnJ4UGITvCd23P3XA1rOd5fKtZxzDbOYd8PnVazkPx/Xtqn5yI+KcIvTB6Ao+0M2EfxBG1QKBgQCe4cKsWSEhx9U9JZxA3LcKkYoEAKgVI15AuYf5QtbbYFrGzbn81XivuTIa9MXSDcdRbO7fC9ZnRVmiHL9BaP+6JCB4Jg8z9ENqTorqmGLySXUmL0d4FCi+k9GG5CKJlrCnZs2q3dJhcxYsWhGMk5qrN8I+tyDQGe9c6DigSaS9HQKBgQDdf5481ddTYSLwDCfP31YYr7Xg9nTwOZSXBfdD8Hoy2LiG2dUwXpVmTHMvJ33XJePYTdo2c1xcfHmBxzfe1neIW/B/9PDVqISeJUorAGGcQ4CXSe/1D2kMKvzyZcGel39NXez3WX+wlth/FcuC/w4wObIpJeHo+XlnIDbNHstPjQKBgBRbXsMQZHNclFDSWdPhs74x6Zobr22N64yleOuSCc9v6BGi2Fqxy1XQh7/2bsY8J7aiG3UOojj3JMXlowexeVqTOGnMjpQcjuq3B4uJXNwoV08+LY0QICxS6jy7TEWOvjGktWNYKpV71nJ2U9tMKjwX19aLRjQDrqybwG2hIe9tAoGAOrmdkuaQMcdXd1/TURk/ZLruRkT8GCSX6TQ0F71HGlJ2AAeJpQzYoAI7DiZojMznWKMBtTjZvATotBhLeTax9a9nE9yJRJnLXRHUKLT/xb+9QfB2G46WgwltRa32hcDozk9dWdUhJWN3nfsW/33Wc0HeYB/O/91OWu/2VHv1aQQ=
+    publicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtYFs7+oabtqVQ5mF/VsHA2ajnAtyWcjfSI8MSx245mqamO/4wVD8GjXSPbGPDYKa5N2oz28ZpAEKPulN9JolJt93sbqCokPL21NTxjBknXjPc/mvQy21rtxrXn8jG5Yrez5rZup1w9FJze2c/1/djPZYuTfRZHmP8Ic72PnjodbIwAxFAd4Btv2xk0076Wv88A20k6gnYTxNOrOdjD020XHzVvIRfJK65QsukyNX+NTFBZkUjhNSfM/vzrSyDbjEgDvhP75DqRR+GhN/zJ5uCNW1f+OvF5GRFC2uNtJkIHQO8bU9GVlUtYHCApRuydjy6zngLtxvhTHm43M8aWOFtQIDAQAB
+    returnUrl: http://111.229.114.126:7777/index.html
+
+  ten:
+    enable: true
+    # 腾讯地图APi
+    mapKey: PX2BZ-5QB64-QTRUX-DU7Q5-AFCVE-YCBNE
+    # 腾讯api
+    secretId: AKIDV1h7G7trkM5ctwbIZeuue8KhpgEVxFsN
+    secretKey: NVM2RYP6WtzsVt1tUosyrBFeokQKCsOy
+    # 腾讯市场api
+    skyEyeSecretid: AKID5861ut2ol7m1d2xyuqb4m801e8td2k9tv1ku
+    skyEyeSecretkey: Hj9mqmhs8n5ltgde9hksae5dxoggydazz2j1ahsk
+
+  apis:
+    smms:
+      enable: true
+      authorizationCode: NFfqBMvYH6RfXaqEgjo79oDfQ7Ckrchg
+      password: qyEF63QVT4!NwT9
+      username: luna_nov
+
+  #微信支付信息配置
+  weixin:
+    # 应用ID
+    appid: wx8397f8696b538317
+    # 商户ID
+    partner: 1473426802
+    # 密钥
+    partnerkey: T6m9iK73b0kn9g5v426MKfHQH7X8rKwb
+    # 支付回调地址
+    notifyurl: http://111.229.114.126:7777/tencent/pay/notify
+
+
+mq:
+  pay:
+    exchange: exchange.order
+    queue: queue.order
+    routing: queue.order
+
