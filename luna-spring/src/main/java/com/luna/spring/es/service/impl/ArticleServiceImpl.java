@@ -4,6 +4,8 @@ import com.luna.spring.es.entity.Article;
 import com.luna.spring.es.mapper.ArticleMapper;
 import com.luna.spring.es.service.ArticleService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -26,6 +28,7 @@ public class ArticleServiceImpl implements ArticleService {
      * @return 实例对象
      */
     @Override
+    @Transactional(isolation = Isolation.REPEATABLE_READ)
     public Article getById(Integer id) {
         return this.articleMapper.getByPrimaryKey(id);
     }
