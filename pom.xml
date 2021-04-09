@@ -21,6 +21,7 @@
         <module>luna-leetcode</module>
         <module>luna-data-structures</module>
         <module>luna-algorithm</module>
+        <module>luna-spring-aop</module>
     </modules>
     <packaging>pom</packaging>
 
