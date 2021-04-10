@@ -22,6 +22,7 @@
         <module>luna-data-structures</module>
         <module>luna-algorithm</module>
         <module>luna-spring-aop</module>
+        <module>luna-spring-session</module>
     </modules>
     <packaging>pom</packaging>
 

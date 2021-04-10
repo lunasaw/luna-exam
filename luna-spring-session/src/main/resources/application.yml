@@ -1,0 +1,19 @@
+spring:
+  session:
+    redis:
+      flush-mode: on_save
+      namespace: session.example
+      cleanup-cron: 0 * * * * *
+    store-type: redis
+    timeout: 1800
+  redis:
+    host: localhost
+    port: 6379
+    password: czy1024
+    jedis:
+      pool:
+        max-active: 100
+        max-wait: 10
+        max-idle: 10
+        min-idle: 10
+    database: 0
