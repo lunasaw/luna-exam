@@ -3,9 +3,11 @@ package com.luna.spring.session.config;
 import com.alibaba.fastjson.JSON;
 import com.luna.common.dto.ResultDTO;
 import com.luna.common.dto.constant.ResultCode;
+import com.luna.redis.util.RedisBoundUtil;
 import com.luna.spring.session.utils.CookieUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,12 +27,16 @@ public class LoginInterceptor implements HandlerInterceptor {
 
     public static String        sessionKey = "luna-session";
 
+    @Autowired
+    private RedisBoundUtil      redisBoundUtil;
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
         throws Exception {
         String oneSessionKey = CookieUtils.getSessionKeyFromRequest(request);
-        if (oneSessionKey != null && oneSessionKey.equals(sessionKey)) {
-            log.info(oneSessionKey);
+        String session = (String)redisBoundUtil.get(oneSessionKey);
+        if (session != null) {
+            log.info(session);
             return true;
         } else {
             response.setHeader("Content-Type", "application/json");
