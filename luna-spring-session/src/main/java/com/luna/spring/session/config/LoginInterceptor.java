@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSON;
 import com.luna.common.dto.ResultDTO;
 import com.luna.common.dto.constant.ResultCode;
 import com.luna.redis.util.RedisBoundUtil;
+import com.luna.redis.util.RedisKeyUtil;
+import com.luna.redis.util.RedisValueUtil;
 import com.luna.spring.session.utils.CookieUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,13 +30,13 @@ public class LoginInterceptor implements HandlerInterceptor {
     public static String        sessionKey = "luna-session";
 
     @Autowired
-    private RedisBoundUtil      redisBoundUtil;
+    private RedisValueUtil      redisValueUtil;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
         throws Exception {
         String oneSessionKey = CookieUtils.getSessionKeyFromRequest(request);
-        String session = (String)redisBoundUtil.get(oneSessionKey);
+        String session = (String)redisValueUtil.get(oneSessionKey);
         if (session != null) {
             log.info(session);
             return true;
