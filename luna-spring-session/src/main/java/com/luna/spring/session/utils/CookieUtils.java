@@ -20,7 +20,6 @@ public class CookieUtils {
         if (ArrayUtils.isNotEmpty(cookies)) {
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals(SESSION_KEY_NAME)) {
-                    System.out.println(cookie.getName());
                     return cookie.getValue();
                 }
             }

@@ -46,16 +46,23 @@
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
 
+
         <dependency>
             <groupId>com.github.czy1024</groupId>
             <artifactId>luna-common</artifactId>
-            <version>1.0.6</version>
+            <version>1.0.8</version>
         </dependency>
 
         <dependency>
             <groupId>com.github.czy1024</groupId>
             <artifactId>redis-spring-boot-starter</artifactId>
             <version>1.0.4</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.lettuce</groupId>
+                    <artifactId>lettuce-core</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 </project>

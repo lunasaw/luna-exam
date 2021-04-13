@@ -1,8 +1,8 @@
 spring:
   redis:
-    host: 192.168.2.110 #哨兵模式下不用配置
-    port: 6379 # 哨兵模式下不用配置
-    password: admin
+    host: f.xicc.cc #哨兵模式下不用配置
+    port: 23418 # 哨兵模式下不用配置
+    password: czy1024
     jedis:
       pool:
         #最大连接数
@@ -13,8 +13,10 @@ spring:
         max-idle: 200
         #最小空闲
         min-idle: 10
-    sentinel:
-      master: mymaster
-      nodes: f.xicc.cc:23419,f.xicc.cc:23420,f.xicc.cc:23421
+#    sentinel:
+#      master: mymaster
+#      nodes: f.xicc.cc:23419,f.xicc.cc:23420,f.xicc.cc:23421
+#    cluster:
+#      nodes: f.xicc.cc:23416,f.xicc.cc:23417,f.xicc.cc:23418
 server:
   port: 8088

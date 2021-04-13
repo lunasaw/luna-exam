@@ -6,6 +6,7 @@ import com.luna.common.dto.constant.ResultCode;
 import com.luna.redis.util.RedisBoundUtil;
 import com.luna.redis.util.RedisKeyUtil;
 import com.luna.redis.util.RedisValueUtil;
+import com.luna.spring.session.UserDO;
 import com.luna.spring.session.utils.CookieUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +28,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 
     private static final Logger log        = LoggerFactory.getLogger(LoginInterceptor.class);
 
-    public static String        sessionKey = "luna-session";
+    public static String        sessionKey = "luna:session:";
 
     @Autowired
     private RedisValueUtil      redisValueUtil;
@@ -36,9 +37,11 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
         throws Exception {
         String oneSessionKey = CookieUtils.getSessionKeyFromRequest(request);
-        String session = (String)redisValueUtil.get(oneSessionKey);
-        if (session != null) {
-            log.info(session);
+        System.out.println(oneSessionKey);
+        UserDO userDO = (UserDO)redisValueUtil.get(sessionKey + oneSessionKey);
+        System.out.println(userDO);
+        if (userDO != null) {
+            log.info(userDO.toString());
             return true;
         } else {
             response.setHeader("Content-Type", "application/json");
