@@ -1,4 +1,4 @@
-package com.luna.spring.session;
+package com.luna.spring.session.entity;
 
 /**
  * @author luna@mac
@@ -9,6 +9,26 @@ public class UserDO {
     private String username;
 
     private String password;
+
+    private String      salt;
+
+    private AccessToken accessToken;
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public AccessToken getAccessToken() {
+        return accessToken;
+    }
+
+    public void setAccessToken(AccessToken accessToken) {
+        this.accessToken = accessToken;
+    }
 
     public String getUsername() {
         return username;
@@ -26,11 +46,14 @@ public class UserDO {
         this.password = password;
     }
 
+
     @Override
     public String toString() {
         return "UserDO{" +
             "username='" + username + '\'' +
             ", password='" + password + '\'' +
+            ", salt='" + salt + '\'' +
+            ", accessToken=" + accessToken +
             '}';
     }
 }

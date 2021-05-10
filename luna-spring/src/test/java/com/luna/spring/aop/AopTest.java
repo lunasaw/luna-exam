@@ -14,11 +14,4 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 public class AopTest {
 
-    @Autowired
-    private HelloAop helloAop;
-
-    @Test
-    public void hello() {
-        helloAop.printAop();
-    }
 }

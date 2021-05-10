@@ -3,16 +3,13 @@ package com.luna.spring.session.controller;
 import com.luna.common.anno.ResponseResult;
 import com.luna.common.text.RandomStrUtil;
 
-import com.luna.redis.util.RedisBoundUtil;
 import com.luna.redis.util.RedisKeyUtil;
 import com.luna.redis.util.RedisValueUtil;
-import com.luna.spring.session.UserDO;
+import com.luna.spring.session.entity.UserDO;
 import com.luna.spring.session.config.LoginInterceptor;
 import com.luna.spring.session.utils.CookieUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.Cookie;
@@ -55,6 +52,7 @@ public class LoginController {
         String key = CookieUtils.getSessionKeyFromRequest(request);
         redisKeyUtil.delete(LoginInterceptor.sessionKey + key);
     }
+
 
     @GetMapping("/main/index")
     public String main() {
