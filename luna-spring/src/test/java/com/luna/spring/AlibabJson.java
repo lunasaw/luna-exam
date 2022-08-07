@@ -56,10 +56,10 @@ public class AlibabJson {
 		//输出 [{"key1":"value1","key2":"value2"},{"key1":"value3","key2":"value4"}]
 		// TODO String objJson = JSON.toJSONString(Object object, boolean prettyFormat)
 		//TODO 传入一个对象和一个布尔类型（是否格式化），将对象转成格式化后的JSON字符串。
-		String listJson1 = JSONArray.toJSONString(list, true);
+		String listJson1 = JSONArray.toJSONString(list);
 		System.out.println(listJson1);
 		System.out.println("==========================================");
-		String listJson2 = JSONArray.toJSONString(list, false);
+		String listJson2 = JSONArray.toJSONString(list);
 		System.out.println(listJson2);
 		System.out.println("==========================================");
 

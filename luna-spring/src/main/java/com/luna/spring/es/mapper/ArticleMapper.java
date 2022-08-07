@@ -2,6 +2,7 @@ package com.luna.spring.es.mapper;
 
 import com.luna.spring.es.entity.Article;
 import org.apache.ibatis.annotations.Mapper;
+
 import java.util.List;
 
 /**

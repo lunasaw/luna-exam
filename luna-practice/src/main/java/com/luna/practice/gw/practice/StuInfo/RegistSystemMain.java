@@ -1,7 +1,5 @@
 package com.luna.practice.gw.practice.StuInfo;
 
-import com.sun.glass.events.WindowEvent;
-
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;

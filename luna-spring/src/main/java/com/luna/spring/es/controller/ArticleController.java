@@ -4,9 +4,6 @@ import com.luna.common.dto.ResultDTO;
 import com.luna.common.dto.constant.ResultCode;
 import com.luna.spring.es.entity.Article;
 import com.luna.spring.es.service.ArticleService;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,9 +30,7 @@ public class ArticleController {
      * @param article
      * @return the r
      */
-    @ApiOperation(value = "查询列表", notes = "查询列表", httpMethod = "GET", produces = MediaType.APPLICATION_JSON_VALUE)
     @GetMapping(value = "/get")
-    @ApiResponses({@ApiResponse(code = 200, message = "查询成功")})
     public ResultDTO query(Article article) {
         return new ResultDTO(true, ResultCode.SUCCESS, "查询列表", articleService.getAll(article));
     }
@@ -46,9 +41,7 @@ public class ArticleController {
      * @param id
      * @return the r
      */
-    @ApiOperation(value = "查询详情", notes = "查询详情", httpMethod = "GET", produces = MediaType.APPLICATION_JSON_VALUE)
     @GetMapping(value = "/{id}")
-    @ApiResponses({@ApiResponse(code = 200, message = "查询成功")})
     public ResultDTO get(@PathVariable("id") Integer id) {
         return new ResultDTO(true, ResultCode.SUCCESS, "查询详情", articleService.getById(id));
     }
@@ -59,9 +52,7 @@ public class ArticleController {
      * @param article
      * @return the r
      */
-    @ApiOperation(value = "添加", notes = "添加", httpMethod = "POST", produces = MediaType.APPLICATION_JSON_VALUE)
     @PostMapping(value = "/add")
-    @ApiResponses({@ApiResponse(code = 200, message = "添加成功")})
     public ResultDTO add(@RequestBody Article article) {
         return new ResultDTO(true, ResultCode.SUCCESS, "添加", articleService.insert(article));
     }
@@ -72,9 +63,7 @@ public class ArticleController {
      * @param article
      * @return the r
      */
-    @ApiOperation(value = "更新", notes = "更新", httpMethod = "PUT", produces = MediaType.APPLICATION_JSON_VALUE)
     @PutMapping(value = "/")
-    @ApiResponses({@ApiResponse(code = 200, message = "修改成功")})
     public ResultDTO update(@RequestBody Article article) {
         return new ResultDTO(true, ResultCode.SUCCESS, "更新", articleService.update(article));
     }
@@ -85,9 +74,7 @@ public class ArticleController {
      * @param id
      * @return the r
      */
-    @ApiOperation(value = "删除", notes = "删除", httpMethod = "DELETE", produces = MediaType.APPLICATION_JSON_VALUE)
     @DeleteMapping(value = "/{id}")
-    @ApiResponses({@ApiResponse(code = 200, message = "删除成功")})
     public ResultDTO delete(@PathVariable("id") Integer id) {
         return new ResultDTO(true, ResultCode.SUCCESS, "删除", articleService.deleteById(id));
     }

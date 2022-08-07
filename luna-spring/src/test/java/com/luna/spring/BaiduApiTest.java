@@ -21,7 +21,7 @@ public class BaiduApiTest {
 
     @Test
     public void atest() throws Exception {
-        System.out.println(BaiduApiConstant.BAIDU_KEY);
+        System.out.println(BaiduApiConstant.API_KEY);
         getBaiduKey.getAuth();
     }
 }

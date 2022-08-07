@@ -2,9 +2,10 @@ package com.luna.spring.util;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.TypeReference;
 import com.google.common.collect.ImmutableMap;
 
-import com.luna.common.http.HttpUtils;
+import com.luna.common.net.HttpUtils;
 import org.apache.http.HttpResponse;
 
 import java.io.IOException;
@@ -32,8 +33,10 @@ public class XueXiaoYi {
 		HttpResponse httpResponse = HttpUtils.doPost(HOST, PATH, ImmutableMap.of("Content-Type", "application/json", "Accept-Language", language
 				, "token", TOKEN
 		), null, s);
-		JSONObject response = HttpUtils.getResponse(httpResponse);
-		List<JSONObject> datas = JSON.parseArray(response.get("data").toString(), JSONObject.class);
+        String andGetResult = HttpUtils.checkResponseAndGetResult(httpResponse);
+        JSONObject jsonObject = JSON.parseObject(andGetResult);
+        String data = jsonObject.getString("data");
+        List<JSONObject> datas = JSON.parseArray(data, JSONObject.class);
 		StringBuffer buffer = new StringBuffer();
 		for (int i = 0; i < datas.size(); i++) {
 			String a = datas.get(i).get("a").toString();

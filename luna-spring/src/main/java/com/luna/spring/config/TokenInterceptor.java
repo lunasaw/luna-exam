@@ -1,11 +1,11 @@
 package com.luna.spring.config;
 
 import cn.hutool.core.lang.Assert;
-import com.alibaba.druid.util.StringUtils;
 import com.luna.spring.entity.ApiUtil;
 import com.luna.spring.entity.MD5Util;
 import com.luna.spring.entity.NotRepeatSubmit;
 import com.luna.spring.entity.TokenInfo;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -14,11 +14,6 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-import java.security.MessageDigest;
 import java.util.concurrent.TimeUnit;
 
 @Component

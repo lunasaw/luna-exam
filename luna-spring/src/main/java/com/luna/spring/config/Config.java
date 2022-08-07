@@ -1,9 +1,6 @@
 package com.luna.spring.config;
 
-import com.luna.common.spring.SpringUtils;
-import com.luna.redis.util.RedisBoundUtil;
 import com.luna.redis.util.RedisKeyUtil;
-import com.luna.tencent.config.TencentConfigValue;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
 
@@ -18,17 +15,8 @@ import org.springframework.context.annotation.Bean;
 public class Config {
 
     @Bean
-    public SpringUtils springUtils() {
-        return new SpringUtils();
-    }
-
-    @Bean
     public RedisKeyUtil redisUtil() {
         return new RedisKeyUtil();
     }
 
-    @Bean
-    public RedisBoundUtil redisBoundUtil() {
-        return new RedisBoundUtil();
-    }
 }

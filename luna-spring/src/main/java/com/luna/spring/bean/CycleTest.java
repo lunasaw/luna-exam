@@ -1,11 +1,8 @@
 package com.luna.spring.bean;
 
-import org.bytedeco.librealsense.context;
 import org.junit.Test;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * 测试类

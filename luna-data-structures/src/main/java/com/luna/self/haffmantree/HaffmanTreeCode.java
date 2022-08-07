@@ -2,7 +2,7 @@ package com.luna.self.haffmantree;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.luna.common.file.FileUtils;
+import com.luna.common.file.FileTools;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -286,11 +286,11 @@ public class HaffmanTreeCode {
      * @param zipFile 返回的zip文件夹路径
      */
     public static void zipFile(String fileName, String zipFile) {
-        String content = FileUtils.readFileToString(fileName);
+        String content = FileTools.readFileToString(fileName);
         String haffmanCode = haffmanCodeCreate2Binary(content);
         byte[] bytes = haffmanZip(haffmanCode);
-        FileUtils.writeBytesToFile(bytes, zipFile);
-        FileUtils.writeStringToFile(zipFile, zipFile);
+        FileTools.write(bytes, zipFile);
+        FileTools.writeStringToFile(zipFile, zipFile);
     }
 }
 
