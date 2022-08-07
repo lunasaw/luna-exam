@@ -23,6 +23,8 @@
         <module>luna-algorithm</module>
         <module>luna-spring-aop</module>
         <module>luna-spring-session</module>
+        <module>luna-webflux</module>
+        <module>spring-boot-webflux</module>
     </modules>
     <packaging>pom</packaging>
 
