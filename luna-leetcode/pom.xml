@@ -11,5 +11,11 @@
 
     <artifactId>luna-leetcode</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>io.github.lunasaw</groupId>
+            <artifactId>luna-common</artifactId>
+        </dependency>
 
+    </dependencies>
 </project>
