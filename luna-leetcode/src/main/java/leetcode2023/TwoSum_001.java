@@ -22,7 +22,7 @@ public class TwoSum_001 {
         if (nums == null || nums.length <= 1) {
             return new int[]{-1, -1};
         }
-        HashMap<Integer, Integer> map = new HashMap<>(nums.length);
+        HashMap<Integer/*数值*/, Integer/*位置下标*/> map = new HashMap<>(nums.length);
         for (int i = 0; i < nums.length; i++) {
             int complement = target - nums[i];
 
