@@ -1,9 +1,9 @@
 package com.luna.jvm.dayone;
 
-import sun.misc.Launcher;
-
+import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.net.URLClassLoader;
+import java.util.Enumeration;
 import java.util.HashSet;
 
 /**
@@ -15,18 +15,18 @@ import java.util.HashSet;
  */
 public class DemoOne {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // int i = 2 + 3;
         int i = 2;
         int j = 3;
         int k = i + j;
 
         System.out.println("*****启动类加载器*******");
-        URL[] urLs = Launcher.getBootstrapClassPath().getURLs();
-        for (URL urL : urLs) {
-            System.out.println(urL);
+        Enumeration<URL> resources = ClassLoader.getSystemResources("");
+        while (resources.hasMoreElements()) {
+            URL url = resources.nextElement();
+            System.out.println(url.getFile());
         }
-
         // 为null 则是引导类加载器加载的类
         System.out.println(String.class.getClassLoader());
 
